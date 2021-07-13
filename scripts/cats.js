@@ -15,24 +15,29 @@ function displayCatInfo(catString) {
   let male = 0;
 
   // Add your code here
+  //extract data
   const catInfo = JSON.parse(catString);
 
+  //loop for mother cats name
   for (let i = 0; i < catInfo.length; i++) {
+  	//not the last name
   	if(i< catInfo.length - 1){
-  		motherInfo = motherInfo + catInfo[i].name + ',';
+  		motherInfo = motherInfo + catInfo[i].name + ", ";
   	}
+  	//the last name with different format
   	else{
-  		motherInfo = motherInfo - ',' + 'and' + catInfo[i] + '.';
+  		motherInfo = motherInfo + "and " + catInfo[i].name + ".";
   	}
 
+  	//loop for kittens number
   	for (let j = 0; j < catInfo[i].kittens.length; j++) {
       total ++;
-      if(catInfo[i].kittens[j].gender == m){
+      if(catInfo[i].kittens[j].gender == "m"){
       	male ++;
       }
     }
-
-    kittenInfo = 'There are totally ' + total + 'kittens. ' + (total - male) + ' of them are female, and ' + male + ' of them are male.'
+    //add kittens information
+    kittenInfo = 'There are totally ' + total + ' kittens. ' + (total - male) + ' of them are female, and ' + male + ' of them are male.'
 
   }	
 
